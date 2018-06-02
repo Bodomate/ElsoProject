@@ -24,10 +24,9 @@ public class HomeController {
 	StoryRepository storyRepo;
 	
 	@RequestMapping("/")
-	public String stories(Model model, Locale locale) {
+	public String stories(Model model) {
 		model.addAttribute("pageTitle","Minden napra egy SFJ sztori");
 		model.addAttribute("stories",getStories());
-		System.out.println((String.format("Request received. Language: %s, Country: %s %n",locale.getLanguage(), locale.getDisplayCountry())));
 		return "stories";
 	}
 	

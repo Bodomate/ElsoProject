@@ -21,6 +21,16 @@ public class Blogger {
 
 	private Blogger(){}
 	
+	
+	
+	public Blogger(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -45,7 +55,7 @@ public class Blogger {
 		return stories;
 	}
 
-	public void setStories(ArrayList<Story> stories) {
+	public void setStories(List<Story> stories) {
 		this.stories = stories;
 	}
 	
