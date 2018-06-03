@@ -33,12 +33,20 @@ public class StoryService {
 		return storyRepo.findAll();
 	}
 	
-	@PostConstruct
-	public void init(){
-		Blogger blogger = new Blogger("Belső Gyula", 25);
-		bloggerRepo.save(blogger);
-		
-		Story story = new Story("Belső cím","Belső tartalom", new Date(), blogger);
-		storyRepo.save(story);
+	public Story getStory(){
+		return storyRepo.findFirstByOrderByPostedDesc();
 	}
+
+	public Story getSpecificStory(String title) {
+		return storyRepo.findByTitle(title);
+	}
+	
+//	@PostConstruct
+//	public void init(){
+//		Blogger blogger = new Blogger("Belső Gyula", 25);
+//		bloggerRepo.save(blogger);
+//		
+//		Story story = new Story("Belső cím","Belső tartalom", new Date(), blogger);
+//		storyRepo.save(story);
+//	}
 }

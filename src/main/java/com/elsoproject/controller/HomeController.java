@@ -35,11 +35,25 @@ public class HomeController {
 		return "stories";
 	}
 	
+	@RequestMapping("/story")
+	public String story(Model model) {
+		model.addAttribute("pageTitle","Minden napra egy SFJ sztori");
+		model.addAttribute("story",storyService.getStory());
+		return "story";
+	}
+	
 	@RequestMapping("/user/{id}")
 	public String searchForUser(@PathVariable(value="id") String id) throws Exception {
 		if (id == null)
 			throw new Exception("Nincs ilyen id-val felhasználónk!");
-		return "user";
+		return "blogger";
+	}
+	@RequestMapping("/title/{title}")
+	public String searchForTitle(@PathVariable(value="title") String title,Model model) throws Exception {
+		if (title == null)
+			throw new Exception("Nincs ilyen címmel sztorink!");
+		model.addAttribute("story",storyService.getSpecificStory(title));
+		return "story";
 	}
 	
 	@ExceptionHandler(Exception.class)
